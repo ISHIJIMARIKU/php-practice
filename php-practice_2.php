@@ -58,11 +58,11 @@ foreach ($personalInfos as $x => $y )
 // }
 
 // 問題３
-$ages = [25, 30, 18];
+$ageList = [25, 30, 18];
 
 foreach ($personalInfos as $y => $info) 
   {
-    $personalInfos[$y]['age'] = $ages[$y];
+    $personalInfos[$y]['age'] = $ageList[$y];
   }
 
 var_dump($personalInfos);
@@ -87,9 +87,9 @@ class Student
     }
 }
 
-$student = new Student(120, "山田");
+$student = new Student(120, '山田');
 
-echo "学籍番号".$student->studentId.番の生徒は{$student->studentName}です。";
+echo '学籍番号'.$student->studentId.'番の生徒は'.$student->studentName.'です。';
 
 // 誤答
 // $id = 120;
@@ -97,7 +97,38 @@ echo "学籍番号".$student->studentId.番の生徒は{$student->studentName}�
 
 
 // Q4 オブジェクト-2
+class Student
+{
+    public $studentId;
+    public $studentName;
+
+    public function __construct($id, $name)
+    {
+        $this->studentId = $id;
+        $this->studentName = $name;
+    }
+
+    public function attend($lesson)
+    {
+        echo $this->studentName.'は'.$lesson.'の授業に参加しました。学籍番号：'.$this->studentId;
+    }
+}
+
+$yamada = new Student(120, '山田');
+$yamada->attend('PHP');
 
 
 // Q5 定義済みクラス
+// 問題１
+$date = new DateTime('2021-02-02');
+echo $date->format('Y-m-d');
+// 問題２
+$date1 = new DateTime('1992-04-25');
+$date2 = new DateTime('2026-03-12');
+
+$diff = $date1->diff($date2);
+
+echo 'あの日から'.$diff->days . '日経過しました。';
+
+
 ?>
